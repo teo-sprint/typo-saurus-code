@@ -10,7 +10,7 @@ const RaceContainer = styled.div`
   padding: 16px 24px;
 `;
 
-const Wrapper = styled.div`
+const DinoWrapper = styled.div`
   position: relative;
 `;
 
@@ -35,7 +35,7 @@ const Dino = styled.div`
 
   &:after {
     content: '';
-    display: ${(props) => (props.fire ? 'block' : 'none')};
+    display: ${(props) => (props.isFire ? 'block' : 'none')};
     width: 45px;
     height: 58px;
     position: relative;
@@ -46,6 +46,11 @@ const Dino = styled.div`
   }
 `;
 
+const DevWrapper = styled.div`
+  position: relative;
+  margin-left: 50px;
+`;
+
 const devAnimation = keyframes`
   0% { background-position: -344px; }
   100% { background-position: -508px; }
@@ -53,7 +58,7 @@ const devAnimation = keyframes`
 
 const Dev = styled.div`
   position: absolute;
-  left: ${(props) => `${props.position || 12}%`};
+  left: ${(props) => `${props.position}%`};
   width: 41px;
   height: 58px;
   background: url(${(props) => `${props.isDark ? lightImage : darkImage}`}) no-repeat left center;
@@ -70,7 +75,8 @@ const Dev = styled.div`
 
 export default {
   RaceContainer,
-  Wrapper,
+  DinoWrapper,
   Dino,
+  DevWrapper,
   Dev,
 };
