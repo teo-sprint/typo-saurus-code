@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import dev from '../../public/images/dev.png'
+
 
 const RaceContainer = styled.div`
   position: relative;
@@ -18,14 +20,15 @@ const Dino = styled.div`
     left : ${props => props.position};
     width: 30px;    
     height: 32px;
-    background-color: #E5E5E5;
+    background: #E5E5E5;
 `
 const Dev = styled.div`
     position : absolute;
     left : ${props => props.position || '40px'};
-    width: 30px;
-    height: 32px;
-    background-color: #E5FF11;
+    width: 60px;
+    height: 60px;
+    background-image: url(${dev});
+    background-size:contain;
 `
 
 export default {

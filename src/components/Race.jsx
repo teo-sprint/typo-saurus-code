@@ -1,6 +1,7 @@
 import React from 'react'
 import Styled from './Race.styled'
 
+
 function Race({dinoPosition, devPosition } ) {
   
 
