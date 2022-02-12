@@ -24,4 +24,9 @@ const InitialContainer = styled.div`
   }
 `;
 
-export default { InitialContainer };
+const RaceWrapper = styled.div`
+  position: relative;
+  margin-top: 123px;
+`;
+
+export default { InitialContainer, RaceWrapper };
