@@ -5,11 +5,11 @@ import Result from './pages/Result';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App text-body'>
       <Routes>
-        <Route path="" element={<Intro />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="/result" element={<Result />} />
+        <Route path='' element={<Intro />} />
+        <Route path='/game' element={<Game />} />
+        <Route path='/result' element={<Result />} />
       </Routes>
     </div>
   );
