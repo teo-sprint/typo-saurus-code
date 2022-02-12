@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App" style={{width:'800px', height:'600px', backgroundColor:'#242835'}}>
       <Routes>
-        <Route path="" element={<Intro />} />
+        <Route path="/" element={<Intro />} />
         <Route path="/game" element={<Game />} />
         <Route path="/result" element={<Result />} />
       </Routes>
