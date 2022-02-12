@@ -5,8 +5,8 @@ function Race({ dinoPosition, devPosition }) {
   return (
     <Styled.RaceContainer>
       <Styled.Wrapper>
-        <Styled.Dino position={dinoPosition} />
-        <Styled.Dev position={devPosition} />
+        <Styled.Dino position={dinoPosition} isDark={true} />
+        <Styled.Dev position={devPosition} isDark={true} />
       </Styled.Wrapper>
     </Styled.RaceContainer>
   );
