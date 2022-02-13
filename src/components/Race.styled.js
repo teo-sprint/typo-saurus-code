@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components';
-import lightImage from '../../public/images/spriteImageDarkmode.png';
-import darkImage from '../../public/images/spriteImagelightmode.png';
+import styled, { keyframes, css } from 'styled-components';
+import lightCharacter from '../../public/images/spriteImageDarkmode.png';
+import darkCharacter from '../../public/images/spriteImagelightmode.png';
 
 const RaceContainer = styled.div`
   width: 100%;
@@ -10,18 +10,114 @@ const RaceContainer = styled.div`
   padding: 16px 24px;
 `;
 
+const DevWrapper = styled.div`
+  position: relative;
+  margin-left: 96px;
+`;
+
 const DinoWrapper = styled.div`
   position: relative;
 `;
 
+const devAnimation = keyframes`
+  0% { 
+    background: url(${lightCharacter}) no-repeat left center;
+    background-position: -344px; 
+    background-size: 513px 58px;
+  }
+  100% { 
+    background: url(${lightCharacter}) no-repeat left center;
+    background-size: 513px 58px;
+    background-position: -508px; 
+    }
+`;
+
+const devfever = keyframes`
+  0% {
+    background: url(${lightCharacter}) no-repeat left center;
+    background-position: -344px; 
+    background-size: 513px 58px;
+  }
+
+  100% {
+    background: url(${darkCharacter}) no-repeat left center;
+    background-position: -508px; 
+    background-size: 513px 58px;
+  }
+`;
+
 const dinoAnimation = keyframes`
-  0% { background-position: -45px; }
-  100% { background-position: -135px; }
+  0% { 
+    background: url(${lightCharacter}) no-repeat left center;
+    background-size: 513px 58px;
+    background-position: -45px; 
+  }
+  100% { 
+    background: url(${lightCharacter}) no-repeat left center;
+    background-size: 513px 58px;
+    background-position: -135px; 
+  }
+`;
+
+const dinofever = keyframes`
+  0% {
+    background: url(${lightCharacter}) no-repeat left center;
+    background-position: -45px; 
+    background-size: 513px 58px;
+  }
+
+  100% {
+    background: url(${darkCharacter}) no-repeat left center;
+    background-size: 513px 58px;
+    background-position: -135px; 
+  }
 `;
 
 const fireAnimation = keyframes`
-  0% { background-position: -180px; }
-  100% { background-position: -340px; }
+  0% {     
+    background: url(${lightCharacter}) no-repeat left center;
+    background-size: 513px 58px;
+    background-position: -180px; }
+  100% { 
+    background: url(${lightCharacter}) no-repeat left center;
+    background-size: 513px 58px;
+    background-position: -340px; }
+`;
+
+const firefever = keyframes`
+  0% {
+    background: url(${lightCharacter}) no-repeat left center;
+    background-position: -180px; 
+    background-size: 513px 58px;
+  }
+
+  100% {
+    background: url(${darkCharacter}) no-repeat left center;
+    background-size: 513px 58px;
+    background-position: -340px; 
+  }
+`;
+
+const Dev = styled.div`
+  position: absolute;
+  left: ${(props) => `${props.position}%`};
+  width: 41px;
+  height: 58px;
+  animation: ${(props) =>
+    props.isFever
+      ? css`
+          ${devfever} 0.6s steps(4) infinite
+        `
+      : css`
+          ${devAnimation} 0.6s steps(4) infinite
+        `};
+  ${(props) =>
+    props.isDead &&
+    css`
+      transition: 1s;
+      animation-play-state: paused;
+      opacity: 30%;
+    `}
 `;
 
 const Dino = styled.div`
@@ -29,9 +125,15 @@ const Dino = styled.div`
   left: ${(props) => `${props.position || 0}%`};
   width: 45px;
   height: 58px;
-  background: url(${(props) => `${props.isDark ? lightImage : darkImage}`}) no-repeat left center;
-  background-size: 513px 58px;
-  animation: ${dinoAnimation} 0.4s steps(2) infinite;
+
+  animation: ${(props) =>
+    props.isFever
+      ? css`
+          ${dinofever} 0.33s steps(2) infinite
+        `
+      : css`
+          ${dinoAnimation} 0.33s steps(2) infinite
+        `};
 
   &:after {
     content: '';
@@ -40,37 +142,17 @@ const Dino = styled.div`
     height: 58px;
     position: relative;
     right: -100%;
-    background: url(${(props) => `${props.isDark ? lightImage : darkImage}`}) no-repeat left center;
+    background: url(${(props) => `${props.isDark ? lightCharacter : darkCharacter}`}) no-repeat left center;
     background-size: 513px 58px;
-    animation: ${fireAnimation} 0.7s steps(4) infinite;
+    animation: ${(props) =>
+      props.isFever
+        ? css`
+            ${firefever} 0.7s steps(2) infinite
+          `
+        : css`
+            ${fireAnimation} .7s steps(2) infinite
+          `};
   }
-`;
-
-const DevWrapper = styled.div`
-  position: relative;
-  margin-left: 96px;
-`;
-
-const devAnimation = keyframes`
-  0% { background-position: -344px; }
-  100% { background-position: -508px; }
-`;
-
-const Dev = styled.div`
-  position: absolute;
-  left: ${(props) => `${props.position}%`};
-  width: 41px;
-  height: 58px;
-  background: url(${(props) => `${props.isDark ? lightImage : darkImage}`}) no-repeat left center;
-  background-size: 513px 53px;
-  animation: ${devAnimation} 0.6s steps(4) infinite;
-  transition: 1s;
-  ${(props) =>
-    props.isDead &&
-    `
-    animation-play-state: paused ;
-    opacity:30%;
-  `}
 `;
 
 export default {
