@@ -109,6 +109,7 @@ function Game() {
   const [combo, setCombo] = useState(0);
   const [maxCombo, setMaxCombo] = useState(5);
   const [isDark, setIsDark] = useState(true);
+  const [wrong , setWorng] = useState(0);
 
   const typoHandler = (e) => {
     if (e.key === 'Shift') return;
@@ -140,6 +141,8 @@ function Game() {
       });
       setCurIdx((curIdx) => curIdx + 1);
       setCombo(() => 0);
+      setWorng((wrong) => wrong+1);
+
     }
   };
 
