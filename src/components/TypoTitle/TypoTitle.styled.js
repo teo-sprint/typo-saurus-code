@@ -3,6 +3,9 @@ import styled from 'styled-components';
 const TypoTitle = styled.div`
   position: relative;
   padding: 4rem;
+  &.result {
+    padding: 0;
+  }
 
   .prompt {
     color: #fff;

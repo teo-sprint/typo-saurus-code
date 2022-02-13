@@ -1,17 +1,6 @@
-export function showTypo() {
+export function showTypo(innerText) {
   const terminal = document.querySelector('.terminal');
-  terminal.innerHTML =
-    "<div class='typo'>" +
-      "<p class='prompt'> ____ _  _ ____ _____</p>" +
-      "<p class='prompt'>(_  _( \\/ (  _ (  _  )</p>" +
-      "<p class='prompt'> )(  \\  / )___/)(_)(</p>" +
-      "<p class='prompt'> (__) (__)(__) (_____)</p>" +
-      "<p class='prompt'> ___   __   __  __ ____ __  __ ___     ___ _____ ____ ____</p>" +
-      "<p class='prompt'>/ __) /__\\ (  )(  (  _ (  )(  / __)   / __(  _  (  _ ( ___)</p>" +
-      "<p class='prompt'>\\__ \\/(__)\\ )(__)( )   /)(__)(\\__ \\  ( (__ )(_)( )(_) )__) </p>" +
-      "<p class='prompt'>(___(__)(__(______(_)\\_(______(___/   \\___(_____(____(____)</p>" +
-      "<p class='prompt'>                                                              </p>\
-    </div>";
+  terminal.innerHTML = innerText;
 
   const lines = document.querySelectorAll('.typo p');
   lines.forEach(function (line, index) {
