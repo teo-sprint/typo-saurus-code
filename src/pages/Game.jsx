@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Game.module.css';
 import Editor from '../components/Editor';
+import Race from '../components/Race';
 
 const data = [
   '<',
@@ -93,6 +94,7 @@ function Game() {
 
   return (
     <div className={styles.container}>
+      <Race />
       <Editor curIdx={curIdx} code={code} />
     </div>
   );
