@@ -13,14 +13,19 @@ function Editor({ curIdx, code, isFever }) {
 
   return (
     <Styled.EditorContainer isFever={isFever}>
-      <Line code={code} isFever={isFever} />
-      <div>
-        {code.map((el, idx) => (
-          <Styled.TextLine key={idx} className={check(el, idx)} isFever={isFever}>
-            {el.value}
-          </Styled.TextLine>
-        ))}
+      <Styled.FirstLine />
+      <div className='flex'>
+        <Line code={code} isFever={isFever} />
+        <div>
+          {code.map((el, idx) => (
+            <Styled.TextLine key={idx} className={check(el, idx)} isFever={isFever}>
+              {el.value}
+            </Styled.TextLine>
+          ))}
+        </div>
       </div>
+      <Styled.FirstLine />
+      <div className='pb-32 pl-6'>/******THE END******/</div>
     </Styled.EditorContainer>
   );
 }
