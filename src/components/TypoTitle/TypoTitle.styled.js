@@ -5,7 +5,7 @@ const TypoTitle = styled.div`
   padding: 4rem;
 
   .prompt {
-    color: #1ff042;
+    color: #fff;
     display: block;
     font-family: 'D2 coding';
     text-align: center;
@@ -13,7 +13,7 @@ const TypoTitle = styled.div`
     font-size: 0.9em;
     letter-spacing: 0.15em;
     white-space: pre-wrap;
-    text-shadow: 0 0 2px rgba(#1ff042, 0.75);
+    text-shadow: 0 0 2px rgba(#fff, 0.75);
     line-height: 5px;
     margin-bottom: 0.75em;
   }

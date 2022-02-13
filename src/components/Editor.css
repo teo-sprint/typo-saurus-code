@@ -1,4 +1,4 @@
-.container{
+ .container{
   white-space: pre-line;
   background-color: #242835;
   padding-top: 24px;
@@ -6,9 +6,8 @@
   height: 500px;
   margin: 0 auto;
   display: flex;
-  
+   
 }
-
 
 .cursor {
   background-color: darkgray;
@@ -20,6 +19,6 @@
     opacity: 0.1;
   }
   100% {
-   opacity: 1;
+    opacity: 1;
   }
 }
