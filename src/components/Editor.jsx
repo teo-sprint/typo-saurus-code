@@ -8,9 +8,7 @@ function Editor({ curIdx, code }) {
       <div>
         {code.map((el, idx) => (
           <span key={idx}>
-            <span key={idx} className={idx === curIdx ? 'correct cursor' : el.isCorrect ? 'correct' : 'false'}>
-              {el.value}
-            </span>
+            <span className={idx === curIdx ? 'correct cursor' : el.isCorrect ? 'correct' : 'false'}>{el.value}</span>
           </span>
         ))}
       </div>
@@ -19,3 +17,7 @@ function Editor({ curIdx, code }) {
 }
 
 export default Editor;
+
+// 초기상태  : 0.6
+// 현재 입력위치(idx)보다 작고 isCorrect값이 true 일때 => 오타내지않고 지나간 경우
+// 현재 입력위치(idx)보다 작고 isCorrect값이 false 일때 => 오타내고 지나간 경우
