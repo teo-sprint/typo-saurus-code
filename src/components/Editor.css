@@ -1,0 +1,53 @@
+body{
+  white-space: pre-line;
+}
+
+
+.container{
+  background-color: #242835;
+  padding-top: 24px;
+  width: 800px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  color: rgba(255, 255, 255, 0.6)
+  
+}
+
+.false{
+  color: firebrick;
+}
+
+.correct{
+  position: relative;
+  color: #FFFFFF;
+}
+
+.cursor {
+  background-color: darkgray;
+  animation: blinking 1.2s linear infinite;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+   opacity: 1;
+  }
+}
+
+.basic{
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+span{
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+
+.num{
+  color: rgba(255, 255, 255, 0.6)
+}
