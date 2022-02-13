@@ -1,9 +1,4 @@
-body{
-  white-space: pre-line;
-}
-
-
-.container{
+.container {
   background-color: #242835;
   padding-top: 24px;
   width: 800px;
@@ -11,14 +6,13 @@ body{
   margin: 0 auto;
   display: flex;
   color: rgba(255, 255, 255, 0.6)
-  
 }
 
-.false{
+.false {
   color: firebrick;
 }
 
-.correct{
+.correct {
   position: relative;
   color: #FFFFFF;
 }
@@ -33,21 +27,21 @@ body{
     opacity: 0.1;
   }
   100% {
-   opacity: 1;
+    opacity: 1;
   }
 }
 
-.basic{
+.basic {
   color: rgba(255, 255, 255, 0.6);
 }
 
 
-span{
+span {
   color: rgba(255, 255, 255, 0.6);
   letter-spacing: 1px;
 }
 
 
-.num{
+.num {
   color: rgba(255, 255, 255, 0.6)
 }
