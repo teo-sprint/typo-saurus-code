@@ -1,7 +1,7 @@
 import React from 'react';
 import Styled from './Race.styled';
 
-function Race({ dinoPosition, devPosition, isFire = false, isDead = false, isDark = true }) {
+function Race({ dinoPosition, devPosition, isFire = false, isDead = false, isDark = true, isFever = false }) {
   return (
     <Styled.RaceContainer>
       <Styled.DinoWrapper>

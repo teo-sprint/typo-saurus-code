@@ -1,16 +1,11 @@
 import styled, { css, keyframes } from 'styled-components';
 
-
-
 const LineContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left : 24px;
-  box-sizing : content-box;
-  margin-right : 12px;
-
-`
-
+  text-align: right;
+  padding-left: 24px;
+  box-sizing: content-box;
+  margin-right: 12px;
+`;
 
 const fever = keyframes`
   0% {
@@ -28,22 +23,19 @@ const fever = keyframes`
     color : rgba(255, 255, 255, 0.3);
   }
 
-`
-
-
-
-
+`;
 
 const LineNum = styled.div`
-  color : rgba(255, 255, 255, 0.3);
-  ${props => (props.isFever ? css`animation: ${fever} .5s ease-in-out infinite` : "none;")};
-
-`
-
-
+  color: rgba(255, 255, 255, 0.3);
+  ${(props) =>
+    props.isFever
+      ? css`
+          animation: ${fever} 0.5s ease-in-out infinite;
+        `
+      : 'none;'};
+`;
 
 export default {
   LineContainer,
   LineNum,
 };
-
