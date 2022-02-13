@@ -109,7 +109,7 @@ function Game() {
   const [combo, setCombo] = useState(0);
   const [maxCombo, setMaxCombo] = useState(5);
   const [isDark, setIsDark] = useState(true);
-  const [wrong , setWorng] = useState(0);
+  const [wrong, setWrong] = useState(0);
 
   const typoHandler = (e) => {
     if (e.key === 'Shift') return;
@@ -136,13 +136,11 @@ function Game() {
     } else {
       setCode((prevState) => {
         prevState[curIdx].isCorrect = false;
-        console.log(prevState[curIdx]);
         return [...prevState];
       });
       setCurIdx((curIdx) => curIdx + 1);
       setCombo(() => 0);
-      setWorng((wrong) => wrong+1);
-
+      setWrong((wrong) => wrong + 1);
     }
   };
 
@@ -159,7 +157,7 @@ function Game() {
 
   return (
     <div className='relative'>
-      <Race />
+      <Race devPosition={Math.floor((curIdx / code.length) * 100)} />
       <Editor curIdx={curIdx} code={code} />
       <div className='p-2 text-green-light absolute bottom-5 right-5'>COMBO : {combo}</div>
     </div>
