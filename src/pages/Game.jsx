@@ -115,6 +115,7 @@ function Game() {
   const [gameStartTimeStamp, setGameStartTimeStamp] = useState();
   const [dinoSpeed, setDinoSpeed] = useState(150);
   const [dinoPos, setDinoPos] = useState(0);
+  const [isFire, setIsFire] = useState(0);
 
   useInterval(
     () => {
@@ -122,6 +123,16 @@ function Game() {
     },
     gameStartTimeStamp !== undefined ? DECI_SEC : null
   );
+
+  useEffect(() => {
+    if (wrong === 0) return;
+    if (wrong % 5 === 0) {
+      setIsFire(true);
+      setTimeout(() => {
+        setIsFire(false);
+      }, 700);
+    }
+  }, [wrong]);
 
   const typoHandler = (e) => {
     if (e.key === 'Shift') return;
@@ -175,7 +186,7 @@ function Game() {
 
   return (
     <div className='relative'>
-      <Race dinoPosition={dinoPos} />
+      <Race dinoPosition={dinoPos} isFire={isFire} />
       <Editor curIdx={curIdx} code={code} />
       <div className='p-2 text-green-light absolute bottom-5 right-5'>COMBO : {combo}</div>
     </div>
