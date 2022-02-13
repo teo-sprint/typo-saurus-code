@@ -1607,8 +1607,7 @@ function Game() {
   const [curIdx, setCurIdx] = useState(0);
   const [combo, setCombo] = useState(0);
   const maxCombo = useRef(0);
-  const [isDark, setIsDark] = useState(true);
-  const [wrong, setWorng] = useState(0);
+  const [wrong, setWrong] = useState(0);
   const [gameStartTimeStamp, setGameStartTimeStamp] = useState();
   const [dinoSpeed, setDinoSpeed] = useState(150);
   const [dinoPos, setDinoPos] = useState(0);
@@ -1685,7 +1684,7 @@ function Game() {
         });
         setCurIdx((curIdx) => curIdx + 1);
         setCombo(() => 0);
-        setWorng((wrong) => wrong + 1);
+        setWrong((wrong) => wrong + 1);
         setDinoSpeed(dinoSpeed + 10);
       }
     }
@@ -1731,7 +1730,7 @@ function Game() {
 
   return (
     <Styled.GameContainer isFever={isFever}>
-      <Race dinoPosition={dinoPos} isFire={isFire} isFever={isFever} />
+      <Race dinoPosition={dinoPos} devPosition={progress} isFire={isFire} isFever={isFever} />
       <Editor curIdx={curIdx} code={code} isFever={isFever} />
       <Styled.ComboLine> COMBO : {combo} </Styled.ComboLine>
     </Styled.GameContainer>
