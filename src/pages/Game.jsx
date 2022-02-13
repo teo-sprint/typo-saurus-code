@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Editor from '../components/Editor';
 import Race from '../components/Race';
+import useInterval from '../util/useInterval';
 
 const data = [
   '<',
@@ -97,6 +98,7 @@ const data = [
   '"',
   '>',
 ];
+const DECI_SEC = 100;
 
 const transCode = (data) =>
   data.map((el) => {
@@ -109,7 +111,17 @@ function Game() {
   const [combo, setCombo] = useState(0);
   const [maxCombo, setMaxCombo] = useState(5);
   const [isDark, setIsDark] = useState(true);
-  const [wrong , setWorng] = useState(0);
+  const [wrong, setWorng] = useState(0);
+  const [gameStartTimeStamp, setGameStartTimeStamp] = useState();
+  const [dinoSpeed, setDinoSpeed] = useState(150);
+  const [dinoPos, setDinoPos] = useState(0);
+
+  useInterval(
+    () => {
+      setDinoPos(dinoPos + (dinoSpeed / (DECI_SEC * 6) / code.length) * 100);
+    },
+    gameStartTimeStamp !== undefined ? DECI_SEC : null
+  );
 
   const typoHandler = (e) => {
     if (e.key === 'Shift') return;
@@ -119,6 +131,10 @@ function Game() {
         setCombo(() => 0);
         return setCurIdx((curIdx) => curIdx - 1);
       }
+    }
+
+    if (gameStartTimeStamp === undefined) {
+      setGameStartTimeStamp(new Date());
     }
 
     const enter = e.key === 'Enter' && code[curIdx].value === '\n' ? true : false;
@@ -141,8 +157,8 @@ function Game() {
       });
       setCurIdx((curIdx) => curIdx + 1);
       setCombo(() => 0);
-      setWorng((wrong) => wrong+1);
-
+      setWorng((wrong) => wrong + 1);
+      setDinoSpeed(dinoSpeed + 10);
     }
   };
 
@@ -159,7 +175,7 @@ function Game() {
 
   return (
     <div className='relative'>
-      <Race />
+      <Race dinoPosition={dinoPos} />
       <Editor curIdx={curIdx} code={code} />
       <div className='p-2 text-green-light absolute bottom-5 right-5'>COMBO : {combo}</div>
     </div>
