@@ -1,6 +1,7 @@
 import React from 'react';
+import Styled from './Line.styled';
 
-export const Line = ({ code }) => {
+export const Line = ({ code, isFever }) => {
   const line = code.filter((el) => el.value === '\n').length + 1;
   const arr = [];
   for (let i = 1; i <= line; i++) {
@@ -8,12 +9,12 @@ export const Line = ({ code }) => {
   }
 
   return (
-    <div className='flex flex-col	pl-6 box-content mr-3'>
+    <Styled.LineContainer>
       {arr.map((el, idx) => (
-        <div key={idx} className='text-grey-600-dark'>
+        <Styled.LineNum key={idx} isFever={isFever}>
           {el}
-        </div>
+        </Styled.LineNum>
       ))}
-    </div>
+    </Styled.LineContainer>
   );
 };
