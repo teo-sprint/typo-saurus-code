@@ -115,12 +115,7 @@ function Game() {
     if (e.key === 'Backspace') {
       if (curIdx <= 0) return;
       else {
-        // setCode((prevState) => {
-        //   prevState[curIdx].isCorrect = true;
-        //   return [...prevState];
-        // });
         setCombo(() => 0);
-
         return setCurIdx((curIdx) => curIdx - 1);
       }
     }
