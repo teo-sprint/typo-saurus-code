@@ -39,7 +39,7 @@ const Dino = styled.div`
     width: 45px;
     height: 58px;
     position: relative;
-    right: -110%;
+    right: -100%;
     background: url(${(props) => `${props.isDark ? lightImage : darkImage}`}) no-repeat left center;
     background-size: 513px 58px;
     animation: ${fireAnimation} 0.7s steps(4) infinite;
@@ -48,7 +48,7 @@ const Dino = styled.div`
 
 const DevWrapper = styled.div`
   position: relative;
-  margin-left: 50px;
+  margin-left: 96px;
 `;
 
 const devAnimation = keyframes`
