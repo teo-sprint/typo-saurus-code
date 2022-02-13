@@ -24,12 +24,12 @@ function Initial() {
   return (
     <Styled.InitialContainer>
       <TypoTitle />
-      <Styled.PressWrapper delay={2}>
+      <Styled.PressWrapper delay={1}>
         <div className='pressBtn'>Press Space</div>
       </Styled.PressWrapper>
-      <Styled.RaceWrapper delay={4}>
+      <Styled.RaceWrapper delay={2}>
         <RaceStyled.Dino position={35} isDark={true} isFire={true} />
-        <RaceStyled.Dev position={60} isDark={true} isDead={false} />
+        <RaceStyled.Dev position={58} isDark={true} isDead={false} />
       </Styled.RaceWrapper>
     </Styled.InitialContainer>
   );
