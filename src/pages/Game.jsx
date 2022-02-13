@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Editor from '../components/Editor';
 import Race from '../components/Race';
 import Styled from './Game.styled';
+import useInterval from '../util/useInterval';
 
 const data = [
   '<',
@@ -98,6 +99,7 @@ const data = [
   '"',
   '>',
 ];
+const DECI_SEC = 100;
 
 const transCode = (data) =>
   data.map((el) => {
@@ -111,8 +113,29 @@ function Game() {
   const [maxCombo, setMaxCombo] = useState(0);
   const [isDark, setIsDark] = useState(true);
   const [wrong, setWorng] = useState(0);
+  const [gameStartTimeStamp, setGameStartTimeStamp] = useState();
+  const [dinoSpeed, setDinoSpeed] = useState(150);
+  const [dinoPos, setDinoPos] = useState(0);
+  const [isFire, setIsFire] = useState(0);
   const [isFever, setIsFever] = useState(false);
- 
+
+  useInterval(
+    () => {
+      setDinoPos(dinoPos + (dinoSpeed / (DECI_SEC * 6) / code.length) * 100);
+    },
+    gameStartTimeStamp !== undefined ? DECI_SEC : null
+  );
+
+  useEffect(() => {
+    if (wrong === 0) return;
+    if (wrong % 5 === 0) {
+      setIsFire(true);
+      setTimeout(() => {
+        setIsFire(false);
+      }, 700);
+    }
+  }, [wrong]);
+
   const typoHandler = (e) => {
     if (isFever) {
       setCode((prevState) => {
@@ -134,6 +157,10 @@ function Game() {
         }
       }
 
+      if (gameStartTimeStamp === undefined) {
+        setGameStartTimeStamp(new Date());
+      }
+
       const enter = e.key === 'Enter' && code[curIdx].value === '\n' ? true : false;
 
       if (e.key === code[curIdx].value || enter) {
@@ -149,14 +176,14 @@ function Game() {
       } else {
         setCode((prevState) => {
           prevState[curIdx].isCorrect = false;
-          // console.log(prevState[curIdx]);
+          console.log(prevState[curIdx]);
           return [...prevState];
         });
         setCurIdx((curIdx) => curIdx + 1);
         setCombo(() => 0);
         setWorng((wrong) => wrong + 1);
+        setDinoSpeed(dinoSpeed + 10);
       }
-
     }
   };
 
@@ -170,11 +197,10 @@ function Game() {
 
   return (
     <Styled.GameContainer>
-      <Race />
+      <Race dinoPosition={dinoPos} isFire={isFire} />
       <Editor curIdx={curIdx} code={code} isFever={isFever} />
       <Styled.ComboLine> COMBO : {combo} </Styled.ComboLine>
     </Styled.GameContainer>
-
   );
 }
 
