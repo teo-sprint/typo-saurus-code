@@ -112,7 +112,7 @@ function Game() {
   const [isDark, setIsDark] = useState(true);
   const [wrong, setWorng] = useState(0);
   const [isFever, setIsFever] = useState(false);
-
+ 
   const typoHandler = (e) => {
     if (isFever) {
       setCode((prevState) => {
@@ -156,6 +156,7 @@ function Game() {
         setCombo(() => 0);
         setWorng((wrong) => wrong + 1);
       }
+
     }
   };
 
@@ -173,6 +174,7 @@ function Game() {
       <Editor curIdx={curIdx} code={code} isFever={isFever} />
       <Styled.ComboLine> COMBO : {combo} </Styled.ComboLine>
     </Styled.GameContainer>
+
   );
 }
 
