@@ -224,9 +224,9 @@ function Game() {
 
   if (isEnd.isEnd === true) {
     const playtime = Math.floor((Date.now() - gameStartTimeStamp) / 1000);
-    const typingSpeed = Math.floor((code.length / playtime) * 60);
     const accuracy = Math.floor((code.filter((el) => el.isCorrect === true).length / code.length) * 100);
     if (isEnd.type === 'clear') {
+      const typingSpeed = Math.floor((code.length / playtime) * 60);
       return (
         <div className='h-[100%] flex justify-center items-center text-display'>
           <GameClear typingSpeed={typingSpeed} playtime={playtime} accuracy={accuracy} maxCombo={maxCombo.current} />
@@ -234,6 +234,7 @@ function Game() {
       );
     }
 
+    const typingSpeed = Math.floor((curIdx / playtime) * 60);
     return (
       <div className='h-[100%] flex justify-center items-center text-display'>
         <GameOver typingSpeed={typingSpeed} playtime={playtime} accuracy={accuracy} maxCombo={maxCombo.current} />
