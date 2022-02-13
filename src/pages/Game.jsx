@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, useRef, useState } from 'react';
 import styles from './Game.module.css';
 import Editor from '../components/Editor';
@@ -95,14 +94,6 @@ function Game() {
   return (
     <div className={styles.container}>
       <Editor curIdx={curIdx} code={code} />
-=======
-import Race from "../components/Race";
-
-function Game() {
-  return (
-    <div>
-      <Race />
->>>>>>> 09941198dcf28e776349e5c28c95e249ff768ade
     </div>
   );
 }
