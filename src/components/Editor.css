@@ -6,18 +6,9 @@
   height: 500px;
   margin: 0 auto;
   display: flex;
-  color: rgba(255, 255, 255, 0.6)
   
 }
 
-.false{
-  color: firebrick;
-}
-
-.correct{
-  position: relative;
-  color: #FFFFFF;
-}
 
 .cursor {
   background-color: darkgray;
@@ -31,19 +22,4 @@
   100% {
    opacity: 1;
   }
-}
-
-.basic{
-  color: rgba(255, 255, 255, 0.6);
-}
-
-
-span{
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 1px;
-}
-
-
-.num{
-  color: rgba(255, 255, 255, 0.6)
 }

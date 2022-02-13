@@ -2,13 +2,21 @@ import './Editor.css';
 import { Line } from './Line';
 
 function Editor({ curIdx, code }) {
+  const check = (el, idx) => {
+    let clsNm = '';
+    if (idx < curIdx && !el.isCorrect) clsNm += 'text-red-light ';
+    if (idx < curIdx && el.isCorrect) clsNm += 'text-base-light ';
+    if (idx === curIdx) clsNm += 'cursor';
+    return clsNm;
+  };
+
   return (
-    <div className='container'>
+    <div className='container text-grey-300-light'>
       <Line code={code} />
       <div>
         {code.map((el, idx) => (
-          <span key={idx}>
-            <span className={idx === curIdx ? 'correct cursor' : el.isCorrect ? 'correct' : 'false'}>{el.value}</span>
+          <span key={idx} className='text-grey-600-dark'>
+            <span className={check(el, idx)}>{el.value}</span>
           </span>
         ))}
       </div>
@@ -17,7 +25,3 @@ function Editor({ curIdx, code }) {
 }
 
 export default Editor;
-
-// 초기상태  : 0.6
-// 현재 입력위치(idx)보다 작고 isCorrect값이 true 일때 => 오타내지않고 지나간 경우
-// 현재 입력위치(idx)보다 작고 isCorrect값이 false 일때 => 오타내고 지나간 경우
