@@ -1,9 +1,5 @@
-body{
-  white-space: pre-line;
-}
-
-
 .container{
+  white-space: pre-line;
   background-color: #242835;
   padding-top: 24px;
   width: 800px;

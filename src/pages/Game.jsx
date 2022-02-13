@@ -101,6 +101,9 @@ function Game() {
     }
   };
 
+  const word = code.length;
+  const wrongWord = code.filter((el) => !el.isCorrect);
+
   useEffect(() => {
     window.addEventListener('keydown', typoHandler);
 
