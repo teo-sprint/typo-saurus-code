@@ -1,26 +1,27 @@
-import './Editor.css';
 import { Line } from './Line';
+import Styled from './Editor.styled';
 
-function Editor({ curIdx, code }) {
+function Editor({ curIdx, code, isFever }) {
   const check = (el, idx) => {
     let clsNm = '';
-    if (idx < curIdx && !el.isCorrect) clsNm += 'text-red-light ';
-    if (idx < curIdx && el.isCorrect) clsNm += 'text-base-light ';
-    if (idx === curIdx) clsNm += 'cursor';
+    if (idx < curIdx && !el.isCorrect) clsNm += 'false ';
+    if (idx < curIdx && el.isCorrect) clsNm += 'pass ';
+    if (idx === curIdx) clsNm += ' cursor ';
+
     return clsNm;
   };
 
   return (
-    <div className='container text-grey-300-light'>
-      <Line code={code} />
+    <Styled.EditorContainer isFever={isFever}>
+      <Line code={code} isFever={isFever} />
       <div>
         {code.map((el, idx) => (
-          <span key={idx} className='text-grey-600-dark'>
-            <span className={check(el, idx)}>{el.value}</span>
-          </span>
+          <Styled.TextLine key={idx} className={check(el, idx)} isFever={isFever}>
+            {el.value}
+          </Styled.TextLine>
         ))}
       </div>
-    </div>
+    </Styled.EditorContainer>
   );
 }
 
