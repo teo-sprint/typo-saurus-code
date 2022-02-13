@@ -26,7 +26,7 @@ function Result() {
 
   useEffect(() => {
     showTypo(SCORE_TYPO);
-  });
+  }, []);
 
   return (
     <div className='relative w-[100%] h-[100%] flex flex-col column justify-center items-center text-white'>
