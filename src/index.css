@@ -28,7 +28,6 @@
 @tailwind utilities;
 
 
-
-*{
+*, pre{
     font-family: 'D2 coding';
   }
