@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const Bgm = (bgmUrl) => {
   const [audio] = useState(new Audio(bgmUrl));
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
   const toggle = () => {
     setPlaying(!playing);
@@ -16,6 +16,7 @@ export const Bgm = (bgmUrl) => {
   useEffect(() => {
     audio.addEventListener('ended', () => setPlaying(false));
     return () => {
+      audio.pause();
       audio.removeEventListener('ended', () => setPlaying(false));
     };
   }, []);
@@ -23,7 +24,8 @@ export const Bgm = (bgmUrl) => {
   useEffect(() => {
     const onPressSpace = (e) => {
       if (e.keyCode === 27) {
-        toggle();
+        setPlaying(false);
+        audio.pause();
       }
     };
     document.body.addEventListener('keyup', onPressSpace);
