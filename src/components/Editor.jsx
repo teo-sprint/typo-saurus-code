@@ -25,7 +25,7 @@ function Editor({ curIdx, code, isFever }) {
         </div>
       </div>
       <Styled.FirstLine />
-      <div className='pb-32 pl-6'>/******THE END******/</div>
+      <Styled.EndLine>/******THE END******/</Styled.EndLine>
     </Styled.EditorContainer>
   );
 }

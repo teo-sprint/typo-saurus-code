@@ -13,6 +13,7 @@ const RaceContainer = styled.div`
 const DevWrapper = styled.div`
   position: relative;
   margin-left: 96px;
+  margin-right: 42px;
 `;
 
 const DinoWrapper = styled.div`
@@ -142,8 +143,6 @@ const Dino = styled.div`
     height: 58px;
     position: relative;
     right: -100%;
-    background: url(${(props) => `${props.isDark ? lightCharacter : darkCharacter}`}) no-repeat left center;
-    background-size: 513px 58px;
     animation: ${(props) =>
       props.isFever
         ? css`
