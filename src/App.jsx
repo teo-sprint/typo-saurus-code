@@ -5,9 +5,9 @@ import Result from './pages/Result';
 
 function App() {
   return (
-    <div className='App text-body width[800px] height[600px] bg-base-dark'>
+    <div className='App text-body w-[800px] h-[600px] bg-base-dark'>
       <Routes>
-        <Route path='' element={<Intro />} />
+        <Route path='/' element={<Intro />} />
         <Route path='/game' element={<Game />} />
         <Route path='/result' element={<Result />} />
       </Routes>
