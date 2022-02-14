@@ -8,10 +8,16 @@ import { codes } from '../data';
 import useInterval from '../util/useInterval';
 
 const DECI_SEC = 100;
-const DEV_OFFSET = 10;
+const DEV_OFFSET = 91; // margin-left: 91px
+const DINO_CONTAINER = 711;
+const DEV_CONTAINER = 711 - DEV_OFFSET;
+const DINO_1_PER = DINO_CONTAINER * 0.01;
+const DEV_1_PER = DEV_CONTAINER * 0.01;
+const DINO_WIDTH = 40;
+const FIRE_WIDTH = 40;
 const GAME_OVER_GAP = {
-  NORMAL: 2,
-  FIRE: 5,
+  NORMAL: DINO_WIDTH,
+  FIRE: DINO_WIDTH + FIRE_WIDTH,
 };
 const FEVER_DURATION = 3000;
 const FEVER_THRESHOLD = 15;
@@ -119,7 +125,8 @@ function Game() {
 
   useEffect(() => {
     if (isEnd.isEnd === true) return;
-    const isGameOver = progress + DEV_OFFSET - dinoPos <= (isFire ? GAME_OVER_GAP.FIRE : GAME_OVER_GAP.NORMAL);
+    const isGameOver =
+      progress * DEV_1_PER + DEV_OFFSET - dinoPos * DINO_1_PER <= (isFire ? GAME_OVER_GAP.FIRE : GAME_OVER_GAP.NORMAL);
     if (progress === 100) {
       setIsEnd({ isEnd: true, type: 'clear' });
     } else if (isGameOver) {
