@@ -165,7 +165,7 @@ function Game() {
     <Styled.GameContainer isFever={isFever}>
       <Race dinoPosition={dinoPos} devPosition={progress} isFire={isFire} isFever={isFever} />
       <Editor curIdx={curIdx} code={code} isFever={isFever} />
-      <Styled.ComboLine> COMBO : {combo} </Styled.ComboLine>
+      <Styled.ComboLine isFever={isFever}> COMBO : {combo} </Styled.ComboLine>
     </Styled.GameContainer>
   );
 }
