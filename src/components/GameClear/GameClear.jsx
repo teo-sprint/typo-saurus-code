@@ -1,30 +1,35 @@
 import React, { useEffect } from 'react';
+import { showTypo } from '../../util/showTypo';
 import { useNavigateToResult } from '../../util/useNavigateToResult';
+import TypoTitleWrapper from '../TypoTitle/TypoTitle.styled';
 
-const CLEAR_TYPO = `  ___ __   ____   __   ____ 
- / __(  ) ( ___) /__\\ (  _ \\
-( (__ )(__ )__) /(__)\\ )   /
- \\___(____(____(__)(__(_)\\_)
-`;
-const DELAY = 1500;
+const CLEAR_TYPO =
+  "<div class='typo'>" +
+  "<p class='prompt'>  ___ __   ____   __   ____ </p>" +
+  "<p class='prompt'> / __(  ) ( ___) /__\\ (  _ \\</p>" +
+  "<p class='prompt'>( (__ )(__ )__) /(__)\\ )   /</p>" +
+  "<p class='prompt'> \\___(____(____(__)(__(_)\\_)</p>" +
+  "<p class='prompt'>                              </p>\
+  </div>";
+
+const DELAY = 5000;
 
 function GameClear({ typingSpeed, playtime, accuracy, maxCombo }) {
   const navigateToResult = useNavigateToResult();
 
   useEffect(() => {
-    console.log('end');
     setTimeout(() => {
       navigateToResult({ typingSpeed, playtime, accuracy, maxCombo });
     }, DELAY);
   }, []);
 
+  useEffect(() => {
+    showTypo(CLEAR_TYPO);
+  }, []);
+
   return (
     <div>
-      {CLEAR_TYPO.split('\n').map((line, index) => (
-        <pre key={index} className='text-white display'>
-          {line}
-        </pre>
-      ))}
+      <TypoTitleWrapper.TypoTitle className='terminal' />
     </div>
   );
 }
