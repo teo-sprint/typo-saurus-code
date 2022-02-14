@@ -8,7 +8,7 @@ const LineContainer = styled.div`
 `;
 
 const LineNum = styled.div`
-  color: rgba(255, 255, 255, 0.3);
+  color: ${(props) => (props.isFever ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.3)')};
 `;
 
 export default {
