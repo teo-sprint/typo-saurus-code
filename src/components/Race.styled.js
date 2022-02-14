@@ -145,10 +145,10 @@ const Dino = styled.div`
     animation: ${(props) =>
       props.isFever
         ? css`
-            ${firefever} 0.7s steps(2) infinite
+            ${firefever} 0.7s steps(4) infinite
           `
         : css`
-            ${fireAnimation} .7s steps(2) infinite
+            ${fireAnimation} .7s steps(4) infinite
           `};
   }
 `;

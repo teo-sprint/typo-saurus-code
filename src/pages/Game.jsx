@@ -10,14 +10,16 @@ import useInterval from '../util/useInterval';
 const DECI_SEC = 100;
 const DEV_OFFSET = 91; // margin-left: 91px
 const DINO_CONTAINER = 711;
-const DEV_CONTAINER = 711 - DEV_OFFSET;
+const DEV_CONTAINER = DINO_CONTAINER - DEV_OFFSET;
 const DINO_1_PER = DINO_CONTAINER * 0.01;
 const DEV_1_PER = DEV_CONTAINER * 0.01;
 const DINO_WIDTH = 40;
-const FIRE_WIDTH = 40;
+const FIRE_DURATION = 700;
+const FIRE_1_FRAME_MS = FIRE_DURATION / 4;
+const FIRE_WIDTH = [13, 20, 27, 40];
 const GAME_OVER_GAP = {
   NORMAL: DINO_WIDTH,
-  FIRE: DINO_WIDTH + FIRE_WIDTH,
+  FIRE: FIRE_WIDTH.map((w, i) => DINO_WIDTH + FIRE_WIDTH[i]),
 };
 const FEVER_DURATION = 3000;
 const FEVER_THRESHOLD = 15;
@@ -37,6 +39,7 @@ function Game() {
   const [dinoSpeed, setDinoSpeed] = useState(150);
   const [dinoPos, setDinoPos] = useState(0);
   const [isFire, setIsFire] = useState(false);
+  const [onFireTime, setOnFireTime] = useState(0);
   const [isFever, setIsFever] = useState(false);
   const [isEnd, setIsEnd] = useState({ isEnd: false, type: null });
 
@@ -62,9 +65,10 @@ function Game() {
     if (wrong === 0) return;
     if (wrong % 5 === 0) {
       setIsFire(true);
+      setOnFireTime(new Date());
       setTimeout(() => {
         setIsFire(false);
-      }, 700);
+      }, FIRE_DURATION);
     }
   }, [wrong]);
 
@@ -125,8 +129,11 @@ function Game() {
 
   useEffect(() => {
     if (isEnd.isEnd === true) return;
+    const timeDiff = new Date() - onFireTime;
+    const fireLength =
+      timeDiff <= FIRE_DURATION ? GAME_OVER_GAP.FIRE[Math.floor(timeDiff / FIRE_1_FRAME_MS)] : GAME_OVER_GAP.FIRE[3];
     const isGameOver =
-      progress * DEV_1_PER + DEV_OFFSET - dinoPos * DINO_1_PER <= (isFire ? GAME_OVER_GAP.FIRE : GAME_OVER_GAP.NORMAL);
+      progress * DEV_1_PER + DEV_OFFSET - dinoPos * DINO_1_PER <= (isFire ? fireLength : GAME_OVER_GAP.NORMAL);
     if (progress === 100) {
       setIsEnd({ isEnd: true, type: 'clear' });
     } else if (isGameOver) {
