@@ -7,13 +7,12 @@ const RaceContainer = styled.div`
   height: 80px;
   box-sizing: border-box;
   border-bottom: solid 1px rgba(255, 255, 255, 0.05);
-  padding: 16px 24px;
+  padding: 16px 65px 16px 24px;
 `;
 
 const DevWrapper = styled.div`
   position: relative;
-  margin-left: 96px;
-  margin-right: 42px;
+  margin-left: 91px;
 `;
 
 const DinoWrapper = styled.div`
