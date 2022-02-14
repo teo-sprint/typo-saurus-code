@@ -3,10 +3,10 @@ import RaceStyled from '../components/Race.styled';
 import ScoreBoard from '../components/ScoreBoard/ScoreBoard';
 import { Bgm } from '../components/Bgm.jsx';
 import score from '../assets/score.wav';
-import { Music } from '../components/Music';
 import { useEffect } from 'react';
 import { showTypo } from '../util/showTypo';
 import TypoTitleWrapper from '../components/TypoTitle/TypoTitle.styled.js';
+import Music from '../components/Music/Music';
 
 const SCORE_TYPO =
   "<div class='typo'>" +
@@ -29,17 +29,19 @@ function Result() {
   }, []);
 
   return (
-    <div className='relative w-[100%] h-[100%] flex flex-col column justify-center items-center text-white'>
-      <div className='absolute z-10 top-[34px] right-[34px] cursor-pointer' onClick={toggle}>
-        <Music playing={playing} />
+    <>
+      <div className='absolute z-10 top-[24px] right-[24px]'>
+        <Music isPlaying={playing} onClick={toggle} />
       </div>
-      <TypoTitleWrapper.TypoTitle className='terminal result' />
-      <ScoreBoard typingSpeed={typingSpeed} playtime={playtime} accuracy={accuracy} maxCombo={maxCombo} />
-      <div className='w-[135px] h-[58px] relative'>
-        <RaceStyled.Dino position={0} isDark={true} isFire={true} />
-        <RaceStyled.Dev position={70} isDark={true} isDead={false} />
+      <div className='relative w-[100%] h-[100%] flex flex-col column justify-center items-center text-white'>
+        <TypoTitleWrapper.TypoTitle className='terminal result' />
+        <ScoreBoard typingSpeed={typingSpeed} playtime={playtime} accuracy={accuracy} maxCombo={maxCombo} />
+        <div className='w-[135px] h-[58px] relative'>
+          <RaceStyled.Dino position={0} isDark={true} isFire={true} />
+          <RaceStyled.Dev position={70} isDark={true} isDead={false} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
