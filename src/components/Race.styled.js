@@ -21,81 +21,25 @@ const DinoWrapper = styled.div`
 
 const devAnimation = keyframes`
   0% { 
-    background: url(${lightCharacter}) no-repeat left center;
     background-position: -344px; 
-    background-size: 513px 58px;
   }
   100% { 
-    background: url(${lightCharacter}) no-repeat left center;
-    background-size: 513px 58px;
     background-position: -508px; 
-    }
-`;
-
-const devfever = keyframes`
-  0% {
-    background: url(${lightCharacter}) no-repeat left center;
-    background-position: -344px; 
-    background-size: 513px 58px;
-  }
-
-  100% {
-    background: url(${darkCharacter}) no-repeat left center;
-    background-position: -508px; 
-    background-size: 513px 58px;
   }
 `;
 
 const dinoAnimation = keyframes`
-  0% { 
-    background: url(${lightCharacter}) no-repeat left center;
-    background-size: 513px 58px;
+  0% {
     background-position: -45px; 
   }
   100% { 
-    background: url(${lightCharacter}) no-repeat left center;
-    background-size: 513px 58px;
-    background-position: -135px; 
-  }
-`;
-
-const dinofever = keyframes`
-  0% {
-    background: url(${lightCharacter}) no-repeat left center;
-    background-position: -45px; 
-    background-size: 513px 58px;
-  }
-
-  100% {
-    background: url(${darkCharacter}) no-repeat left center;
-    background-size: 513px 58px;
     background-position: -135px; 
   }
 `;
 
 const fireAnimation = keyframes`
-  0% {     
-    background: url(${lightCharacter}) no-repeat left center;
-    background-size: 513px 58px;
-    background-position: -180px; }
-  100% { 
-    background: url(${lightCharacter}) no-repeat left center;
-    background-size: 513px 58px;
-    background-position: -340px; }
-`;
-
-const firefever = keyframes`
-  0% {
-    background: url(${lightCharacter}) no-repeat left center;
-    background-position: -180px; 
-    background-size: 513px 58px;
-  }
-
-  100% {
-    background: url(${darkCharacter}) no-repeat left center;
-    background-size: 513px 58px;
-    background-position: -340px; 
-  }
+  0% { background-position: -180px; }
+  100% { background-position: -340px; }
 `;
 
 const Dev = styled.div`
@@ -103,14 +47,9 @@ const Dev = styled.div`
   left: ${(props) => `${props.position}%`};
   width: 41px;
   height: 58px;
-  animation: ${(props) =>
-    props.isFever
-      ? css`
-          ${devfever} 0.6s steps(4) infinite
-        `
-      : css`
-          ${devAnimation} 0.6s steps(4) infinite
-        `};
+  background: url(${(props) => (props.isFever ? darkCharacter : lightCharacter)}) no-repeat left center;
+  background-size: 513px 58px;
+  animation: ${devAnimation} 0.6s steps(4) infinite;
   ${(props) =>
     props.isDead &&
     css`
@@ -125,15 +64,9 @@ const Dino = styled.div`
   left: ${(props) => `${props.position || 0}%`};
   width: 45px;
   height: 58px;
-
-  animation: ${(props) =>
-    props.isFever
-      ? css`
-          ${dinofever} 0.33s steps(2) infinite
-        `
-      : css`
-          ${dinoAnimation} 0.33s steps(2) infinite
-        `};
+  background: url(${(props) => (props.isFever ? darkCharacter : lightCharacter)}) no-repeat left center;
+  background-size: 513px 58px;
+  animation: ${dinoAnimation} 0.33s steps(2) infinite;
 
   &:after {
     content: '';
@@ -142,14 +75,9 @@ const Dino = styled.div`
     height: 58px;
     position: relative;
     right: -100%;
-    animation: ${(props) =>
-      props.isFever
-        ? css`
-            ${firefever} 0.7s steps(4) infinite
-          `
-        : css`
-            ${fireAnimation} .7s steps(4) infinite
-          `};
+    background: url(${(props) => (props.isFever ? darkCharacter : lightCharacter)}) no-repeat left center;
+    background-size: 513px 58px;
+    animation: ${fireAnimation} 0.7s steps(4) infinite;
   }
 `;
 
