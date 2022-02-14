@@ -15,8 +15,7 @@ function ScoreBoard({ typingSpeed, playtime, accuracy, maxCombo }) {
   const navigate = useNavigate();
 
   const onClickShare = useCallback(() => {
-    navigator.clipboard.writeText(window.location.href);
-    alert('URL을 복사했어요!');
+    navigator.clipboard.writeText(window.location.href).then(() => alert('URL을 복사했어요!'));
   }, []);
   const onClickRestart = useCallback(() => {
     navigate('/');
