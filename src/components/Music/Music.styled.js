@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import musicOffDarkMode from '../../../public/images/musicoff-dark.png';
-import musicOnDarkMode from '../../../public/images/musicon-dark.png';
-import musicOffLightMode from '../../../public/images/musicoff-light.png';
-import musicOnLightMode from '../../../public/images/musicon-light.png';
+import musicOffDarkMode from '/images/musicoff-dark.png';
+import musicOnDarkMode from '/images/musicon-dark.png';
+import musicOffLightMode from '/images/musicoff-light.png';
+import musicOnLightMode from '/images/musicon-light.png';
 
 const MusicWrapper = styled.div`
   width: 44px;

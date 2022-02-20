@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
-import lightCharacter from '../../public/images/spriteImageDarkmode.png';
-import darkCharacter from '../../public/images/spriteImagelightmode.png';
+import lightCharacter from '/images/spriteImageDarkmode.png';
+import darkCharacter from '/images/spriteImagelightmode.png';
 
 const RaceContainer = styled.div`
   width: 100%;
