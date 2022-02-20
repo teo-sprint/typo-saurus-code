@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { showTypo } from '../util/showTypo';
 import TypoTitleWrapper from '../components/TypoTitle/TypoTitle.styled.js';
 import Music from '../components/Music/Music';
+import { useNavigate } from 'react-router-dom';
 
 const SCORE_TYPO =
   "<div class='typo'>" +
@@ -23,9 +24,23 @@ function Result() {
   const [playing, toggle] = Bgm(score);
   const [searchParams] = useSearchParams();
   const [typingSpeed, playtime, accuracy, maxCombo] = RESULT_ITEM.map((key) => searchParams.get(key));
+  const navigate = useNavigate();
 
   useEffect(() => {
     showTypo(SCORE_TYPO);
+  }, []);
+
+  useEffect(() => {
+    const onPressSpace = (e) => {
+      if (e.keyCode === 67) {
+        navigate('/credit');
+      }
+    };
+    document.body.addEventListener('keyup', onPressSpace);
+
+    return () => {
+      document.body.removeEventListener('keyup', onPressSpace);
+    };
   }, []);
 
   return (
