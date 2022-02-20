@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const fever = keyframes`
   0% {
@@ -15,13 +15,10 @@ const fever = keyframes`
 `;
 
 const NameCardWrapper = styled.div`
-  &:hover {
-    ${(props) =>
-      props.link
-        ? css`
-            animation: ${fever} 0.5s ease-in-out infinite;
-          `
-        : null};
+  &.has-link {
+    :hover {
+      animation: ${fever} 0.5s ease-in-out infinite;
+    }
   }
 `;
 

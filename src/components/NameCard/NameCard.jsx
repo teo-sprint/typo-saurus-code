@@ -1,8 +1,8 @@
 import NameCardWrapper from './NameCard.styled';
 
-function NameCard({ name, link }) {
+function NameCard({ name, link, className }) {
   return (
-    <NameCardWrapper link={link}>
+    <NameCardWrapper className={className}>
       <a href={link}>
         <span>{name}</span>
       </a>
