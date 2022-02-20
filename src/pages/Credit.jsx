@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import NameCard from '../components/nameCard/nameCard';
+import NameCard from '../components/NameCard/NameCard';
 import Styled from './Credit.styled';
 import TypoTitleWrapper from '../components/TypoTitle/TypoTitle.styled';
 import { TEAM_TSD } from '../credit';
