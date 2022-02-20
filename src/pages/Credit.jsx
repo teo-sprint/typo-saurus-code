@@ -28,7 +28,7 @@ function Credit() {
         <Styled.CreditLeft>개발</Styled.CreditLeft>
         <Styled.CreditRight>
           {TEAM_TSD.filter((member) => member.role === 'developer').map((member, idx) => {
-            return <NameCard name={member.name} link={member.link} key={idx} />;
+            return <NameCard className='has-link' name={member.name} link={member.link} key={idx} />;
           })}
         </Styled.CreditRight>
       </Styled.CreditSection>
@@ -36,7 +36,7 @@ function Credit() {
         <Styled.CreditLeft>디자인</Styled.CreditLeft>
         <Styled.CreditRight>
           {TEAM_TSD.filter((member) => member.role === 'designer').map((member, idx) => {
-            return <NameCard name={member.name} link={member.link} key={idx} />;
+            return <NameCard className='has-link' name={member.name} link={member.link} key={idx} />;
           })}
         </Styled.CreditRight>
       </Styled.CreditSection>
@@ -52,7 +52,7 @@ function Credit() {
         <Styled.CreditLeft>SPECIAL THANKS TO</Styled.CreditLeft>
         <Styled.CreditRight className='teo__section'>
           {TEAM_TSD.filter((member) => member.role === 'mental_holding').map((member, idx) => {
-            return <NameCard name={member.name} link={member.link} key={idx} />;
+            return <NameCard className='has-link' name={member.name} link={member.link} key={idx} />;
           })}
         </Styled.CreditRight>
       </Styled.CreditSection>
